@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TATETI - Tres en Línea</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        table {
+            margin: 0 auto;
+            border-collapse: collapse;
+        }
+        td {
+            width: 60px;
+            height: 60px;
+            border: 2px solid #333;
+            text-align: center;
+            vertical-align: middle;
+        }
+        button {
+            width: 100%;
+            height: 100%;
+            font-size: 24px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<h1>TATETI - Tres en Línea</h1>
+
+<div class="board">
+    <table>
+        <%
+        int[][] board = (int[][]) request.getAttribute("board");
+        String winner = (String) request.getAttribute("winner");
+
+        if (winner != null) {
+        out.println("<h2>El jugador " + winner + " ha ganado!</h2>");
+        } else {
+        for (int row = 0; row < 3; row++) {
+        out.println("<tr>");
+        for (int col = 0; col < 3; col++) {
+        out.println("<td>");
+            if (board[row][col] == 0) {
+            out.println("<form action='TATETI' method='get'>");
+                out.println("<input type='hidden' name='row' value='" + row + "'>");
+                out.println("<input type='hidden' name='col' value='" + col + "'>");
+                out.println("<button type='submit'></button>");
+                out.println("</form>");
+            } else {
+            char symbol = board[row][col] == 1 ? 'X' : 'O';
+            out.println("<button disabled>" + symbol + "</button>");
+            }
+            out.println("</td>");
+        }
+        out.println("</tr>");
+        }
+        }
+        %>
+    </table>
+</div>
+
+<%
+if (winner != null) {
+out.println("<form action='TATETI' method='get'><button type='submit'>Reiniciar Juego</button></form>");
+}
+%>
+</body>
+</html>
