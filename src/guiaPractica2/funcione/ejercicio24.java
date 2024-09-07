@@ -1,7 +1,8 @@
 package guiaPractica2.funcione;
 
 import java.util.Scanner;
-import static clase.teoria.funciones.potencia;
+
+import static clase.teoria.funciones.*;
 
 public class ejercicio24 {
     public static void main(String[] args) {
@@ -12,5 +13,9 @@ public class ejercicio24 {
         System.out.print("ingrese el exponente y presione enter: ");
         int exponente = scanner.nextInt();
         System.out.println("El resultado de la potencia es: " + potencia(base,exponente));
+        System.out.println(potenciaRecursiva(base,exponente));
+        System.out.println(sumaDeAntepasados(6));
+        System.out.println(sumaDeAntepasadosNormal(6));
+        System.out.println(esPotencia(2523,5));
     }
 }
