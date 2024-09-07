@@ -4,7 +4,6 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 
 import static java.lang.Math.PI;
-import static java.lang.Math.pow;
 
 public class funciones {
     public static String holaMundo(){
@@ -16,25 +15,26 @@ public class funciones {
     }
 
     public static boolean sonIguales(int num1, int num2){
-        return (num1 - num2) <= 3 && (num2 - num1) <=3;
+        return (num1 - num2) <= 0.00001 && (num2 - num1) <=0.00001;
     }
 
     public static double potencia(double base, int exponente){
-        int i = 1;
         double aux = base;
         if(exponente == 0){
             return 1;
         } else if (exponente < 0) {
             exponente = exponente * -1;
-            while (i < exponente){
+            /*while (i < exponente){
                 base = base * aux;
                 i = i + 1;
+            }*/
+            for(int i = 1; i < exponente; i++){
+                base = base * aux;
             }
             return 1/base;
         }else{
-            while (i < exponente){
+            for(int i = 1; i < exponente;i++){
                 base = base * aux;
-                i = i + 1;
             }
             return base;
         }
@@ -76,33 +76,26 @@ public class funciones {
         // Si no se encontró ningún divisor, el número es primo
         return true;
     }
-
+//corregir
     public static int deBinarioADecimal(int binario){
         int deci = 0;
-        String binStr = Integer.toString(binario); // Convertir el número binario a cadena
-        for (int i = 0; i < binStr.length(); i++) {
-            int bit = Character.getNumericValue(binStr.charAt(i));
-            if(bit > 1 ^ bit < 0){
-                throw new IllegalArgumentException("El número binario ingresado no puede contener numero que no sean 0 o 1 positivo, intente de nuevo");
+        for (int i = 0; i < 10000; i++){
+            deci = deci + (binario % 10 * (2 ^ i));
+            binario = binario / 10;
+            if(binario / 10 == 0){
+                i = 10001;
             }
-            deci = deci * 2 + bit;
         }
         return deci;
     }
-
-    /* se puede utilizar esto para limitar el numero de decimales, no se si es necesario
-    BigDecimal bd = new BigDecimal(number);
-    bd = bd.setScale(2, RoundingMode.HALF_UP);
-    System.out.println(bd.doubleValue());
-     */
 
   /*  public static double raizCuadrada(int num){
         if (num < 0){
             throw new RuntimeException("El número ingresado debe igual o mayor a cero");
         }
         return pow(num,0.5);
-    }
-   */
+    }*/
+
     public static double raizCuadrada(int num){
         double b = 1;
         double h = num;
@@ -116,5 +109,82 @@ public class funciones {
         BigDecimal bd = new BigDecimal(h);
         bd = bd.setScale(5, RoundingMode.HALF_UP);
         return bd.doubleValue();
+    }
+
+    public static int factorialRecursivo(int number){
+        if(number < 0){
+            throw new RuntimeException("The entered number must be greater or equal to zero");
+        }
+        if(number > 1){
+            return factorialRecursivo(number - 1) * number;
+        }else {
+            return 1;
+        }
+    }
+
+    public static int sumaNatural(int number){
+        if (number <= 0){
+            throw new RuntimeException("The entered number must be greater than zero");
+        }
+        if(number > 1){
+            return sumaNatural(number - 1) + number;
+        }else {
+            return 1;
+        }
+    }
+
+    public static int fibonacciRecursivo(int number){
+        if (number <= 0){
+            throw new RuntimeException("The entered number must be greater than zero");
+        }
+        if (number > 2){
+            return fibonacciRecursivo(number - 1) + fibonacciRecursivo(number - 2);
+        }else{
+            return 1;
+        }
+    }
+
+    public static int sumaDigitosRecursivo(int number){
+        if(number / 10 > 0){
+            return sumaDigitosRecursivo(number / 10) + number % 10;
+        }else{
+            return number % 10;
+        }
+    }
+
+    public static double potenciaRecursiva(double base, int exponente){
+        if (exponente == 1){
+            return base;
+        }else if(exponente <= 0){
+            return 1;
+        }
+        if (exponente > 2){
+            return potenciaRecursiva(base,exponente - 1) * base;
+        }else {
+            return base * base;
+        }
+    }
+
+    public static int sumaDeAntepasados(int numero){
+        if(numero > 1){
+            return sumaDeAntepasados(numero - 1) + numero;
+        }else{
+            return 1;
+        }
+    }
+
+    public static int sumaDeAntepasadosNormal(int numero){
+        for(int i = numero - 1;i > 0; i--){
+            numero += i;
+        }
+        return numero;
+    }
+
+    public static boolean esPotencia(int numero, int base){
+        while(base < numero){
+            int aux = base;
+            base *= aux;
+        }
+        return base == numero;
     }
 }
