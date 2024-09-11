@@ -24,10 +24,6 @@ public class funciones {
             return 1;
         } else if (exponente < 0) {
             exponente = exponente * -1;
-            /*while (i < exponente){
-                base = base * aux;
-                i = i + 1;
-            }*/
             for(int i = 1; i < exponente; i++){
                 base = base * aux;
             }
@@ -88,13 +84,6 @@ public class funciones {
         }
         return deci;
     }
-
-  /*  public static double raizCuadrada(int num){
-        if (num < 0){
-            throw new RuntimeException("El número ingresado debe igual o mayor a cero");
-        }
-        return pow(num,0.5);
-    }*/
 
     public static double raizCuadrada(int num){
         double b = 1;
@@ -186,5 +175,61 @@ public class funciones {
             base *= aux;
         }
         return base == numero;
+    }
+
+    public static boolean esPotenciaRecursiva(int numero, int base) {
+        // Caso base: Si el número es igual a 1, significa que es una potencia de la base.
+        if (numero == 1) {
+            return true;
+        }
+
+        // Si el número es menor que la base o no es divisible entre la base, no es potencia de la base.
+        if (numero < base || numero % base != 0) {
+            return false;
+        }
+
+        // Llamada recursiva dividiendo el número por la base.
+        return esPotencia(numero / base, base);
+    }
+
+    public static int sumaDeAaB(int numeroMenor, int numeroMayor){
+        if(numeroMenor < numeroMayor){
+            return sumaDeAaB(numeroMenor, numeroMayor - 1) + numeroMayor;
+        }else{
+            return numeroMenor;
+        }
+    }
+    
+    public static int sumaDigitosPares(int numero){
+        // Caso base: Si el número es 0, se ha terminado la recursión.
+        if (numero == 0) {
+            return 0;
+        }
+        //cambia la condición, hace que llegue a iterarse el 0, antes no llegaba a 0 porque preguntaba si la division deba como resultado 0 y retornaba el resto de ser asi
+        // Extraer el último dígito del número.
+        int digito = numero % 10;
+
+        // Si el dígito es par, lo sumamos; si no, sumamos 0.
+        if (digito % 2 == 0) {
+            return digito + sumaDigitosPares(numero / 10);
+        } else {
+            return sumaDigitosPares(numero / 10);
+        }
+    }
+
+    public static int divisionRecursiva(int numerador, int denominador){
+        if(numerador - denominador >= 0){
+            return divisionRecursiva(numerador - denominador, denominador) + 1;
+        }else {
+            return 0;
+        }
+    }
+
+    public static int sumaDeCuadrados(int numero){
+        if(numero > 1){
+            return sumaDeCuadrados(numero - 1) + numero * numero;
+        }else{
+            return 1;
+        }
     }
 }

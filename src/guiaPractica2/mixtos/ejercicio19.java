@@ -11,7 +11,7 @@ public class ejercicio19 {
         if (lowestNumber < 0){
             throw new RuntimeException("The entered number must be a natural number");
         }
-        for(int i = 2; i <= 15; i++){
+        for(int i = 1; i <= 14; i++){
             System.out.println("Enter the " + i + " number");
             int number = scanner.nextInt();
             if (number < 0){
