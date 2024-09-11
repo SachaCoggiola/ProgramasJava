@@ -74,15 +74,16 @@ public class funciones {
     }
 //corregir
     public static int deBinarioADecimal(int binario){
-        int deci = 0;
-        for (int i = 0; i < 10000; i++){
-            deci = deci + (binario % 10 * (2 ^ i));
+        int decimal = 0;
+        int base = 1;
+
+        while (binario > 0) {
+            int ultimoDigito = binario % 10;
             binario = binario / 10;
-            if(binario / 10 == 0){
-                i = 10001;
-            }
+            decimal += ultimoDigito * base;
+            base = base * 2;
         }
-        return deci;
+        return decimal;
     }
 
     public static double raizCuadrada(int num){

@@ -22,6 +22,6 @@ public class ejercicio24 {
         System.out.println(sumaDigitosPares(1234));
         System.out.println(divisionRecursiva(8,3));
         System.out.println(sumaDeCuadrados(5));
-        System.out.println(logaritmoDeBaseDos(5,0.0001));
+        //System.out.println(logaritmoDeBaseDos(5,0.0001));
     }
 }
