@@ -1,5 +1,5 @@
 package unidad3;
-import static teoria.funcionesArrays.imprimirVector;
+import static unidad3.funciones.imprimirVector;
 
 public class ejercicio4 {
     public static void main(String[] args) {

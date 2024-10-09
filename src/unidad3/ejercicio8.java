@@ -1,7 +1,6 @@
 package unidad3;
 
 import static clase.teoria.funciones.enteroAleatorio;
-import static teoria.funcionesArrays.vectorAleatorio;
 
 public class ejercicio8 {
     public static void main(String[] args) {

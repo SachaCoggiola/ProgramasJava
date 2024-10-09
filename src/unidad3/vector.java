@@ -1,4 +1,4 @@
-package ejerciciosDeClase;
+package unidad3;
 import static clase.teoria.funciones.enteroAleatorio;
 
 public class vector {
