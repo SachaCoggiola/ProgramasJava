@@ -1,4 +1,4 @@
-package guiaPractica3;
+package unidad3;
 
 public class ejercicio2 {
     public static void main(String[] args) {
