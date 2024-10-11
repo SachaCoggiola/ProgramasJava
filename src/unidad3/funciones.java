@@ -128,6 +128,9 @@ public class funciones {
     }
 
     public static int[][] generarMatriz(int filas, int columnas){
+        if(filas < 1 || columnas < 1){
+            throw new RuntimeException("Las numeros de filas y columnas para la matriz deben ser mayores a 1");
+        }
         return new int[filas][columnas];
     }
 
