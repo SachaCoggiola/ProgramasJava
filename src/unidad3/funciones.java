@@ -269,4 +269,22 @@ public class funciones {
         }
         return matriz;
     }
+
+    public static int[] circleSort(int[] vector, int numero){
+        int[] vectorAux = new int[vector.length];
+
+        if(numero % vector.length == 0){
+            return vector;
+        } else if (numero > vector.length) {
+            numero -= vector.length;
+        }
+        for (int i = 0; i < vector.length; i++) {
+            if (i + numero >= vector.length) {
+                vectorAux[i + numero - vector.length] = vector[i];
+            }else {
+                vectorAux[i + numero] = vector[i];
+            }
+        }
+        return vectorAux;
+    }
 }

@@ -11,6 +11,7 @@ public class testEjercicios {
         System.out.println();
         imprimirMatriz(matrizIentidad(4));
         System.out.println();
+        int[] vector = vectorAleatorio(4,9,0);
         int[][] matriz = matrizAleatorio(2,2, 5,1);
         int[][] matriz2 = matrizAleatorio(2,2, 5,1);
         imprimirMatriz(matriz);
@@ -34,5 +35,9 @@ public class testEjercicios {
         imprimirMatriz(productoDeMatrices(matriz,matriz2));
         System.out.println();
         imprimirMatriz(matrizPiramidal(8));
+        System.out.println();
+        imprimirVector(vector);
+        System.out.println();
+        imprimirVector(circleSort(vector,4));
     }
 }
